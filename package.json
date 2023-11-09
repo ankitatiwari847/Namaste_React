@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "this is namaste js course",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ankitatiwari847/Namaste_React.git"
+  },
+  "keywords": [],
+  "author": "Ankita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ankitatiwari847/Namaste_React/issues"
+  },
+  "homepage": "https://github.com/ankitatiwari847/Namaste_React#readme",
+  "devDependencies": {
+    "parcel": "^2.10.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
