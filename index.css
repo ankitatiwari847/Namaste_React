@@ -1,5 +1,9 @@
 body {
   margin: 0;
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 }
 .header {
   display: flex;
@@ -76,6 +80,7 @@ body {
 }
 .restaurant-name {
   margin: 5px 0px;
+  font-size: 16px;
 }
 #restaurant-logo {
   height: 115px;
@@ -128,4 +133,124 @@ body {
   border-radius: 5px;
   margin: 10px;
   background-color: lightgray;
+}
+.res-menu-wrap {
+  margin: 20px 15%;
+  .res-menu-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dashed lightgray;
+    padding-bottom: 10px;
+    .res-detail {
+      h4,
+      p {
+        margin: inherit;
+      }
+      p {
+        font-size: 12px;
+      }
+      h4 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+    .rating-wrap {
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      padding: 5px;
+      box-shadow: 0px 1px 2px #e7e5e5;
+      align-self: center;
+      .rating {
+        justify-content: start;
+        border-bottom: 1px solid lightgray;
+      }
+
+      .rating-count {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.deals-wrap {
+  border-bottom: 1px dashed #d3d3d3;
+  padding-bottom: 20px;
+  overflow-x: scroll;
+  .deals-heading {
+    display: flex;
+    h4 {
+      margin: 2px;
+      margin: 10px 10px 10px 0px;
+    }
+  }
+
+  p {
+    font-size: 12px;
+  }
+  .deals {
+    display: flex;
+    div {
+      margin: 2px 5px 0px 0;
+      border: 1px solid #e9e9eb;
+      border-radius: 5px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      padding: 8px;
+      align-items: center;
+      padding: 5px;
+      min-width: 100px;
+      p {
+        font-size: 9px;
+        margin: 5px 0px 0px 0px;
+      }
+      h6 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.deals-wrap::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.top-pick-card {
+  img {
+    height: 200px;
+  }
+}
+
+.category-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    height: 15px;
+  }
+}
+.dish-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+
+  button {
+    height: 28px;
+    width: 70px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid #b7b9bb;
+    border-radius: 2px;
+    color: forestgreen;
+    box-shadow: 0 1px 2px #0000000a;
+  }
+  .dish-name {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .dish-price {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
 }

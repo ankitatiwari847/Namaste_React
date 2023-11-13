@@ -1,0 +1,74 @@
+1.What is NPM?
+NPM is package manager that manages the for JS.
+
+2.What is parel/webpack? why do we need it?
+Parcel is a bundler. A bundler is a tool that put together all the JS files and dependencies, and gives a new file ready for web known a a bundle file.
+
+3.What is .parcel-cache?
+Parcel keep a cache that stores information about your project after a build, so that when is built next time it wont have to do the process all over agin, and this makes the parcel faster.
+
+4.what is npx?
+NPX is used to execute the install files by npm.
+
+5.Dependencies vs devdepedencies?
+Dev Dependencies are used during the development mode, whereas de penencies on production.
+npm install -D parcel.
+
+6.What is tree shaking?
+Same as when we shake a tree the old lifeless leaves fall down.
+The tree shaking remove the unused codes from thetree.
+
+7. 5 superpower of Parcel?
+   HMR(hot module replacement)
+   run local server
+   bundle
+   tree shaking
+   caching
+   Error handling
+
+8.What is gitignore?
+File where we write the code that we dont want to push in git. which are not needed in production. They can be re created by package.jscon and packae.lock.json,
+Ex: node module, dist.
+
+9.Package.json vs package.lock.json ?
+Package json -> stores the configuration for the dependencies.(Ex: parcel: ^2.9.5)
+Package.lock -> stores the exact version of dependencies. (Ex: parcel: 2.9.5)
+
+10.What is node module?
+Node module stores the dependencies needed in project.
+
+11.what is dist?
+dist is created by parcel. It is by the parcel or build to run.
+
+12.Script type in html?
+1)module
+
+J13.SX?
+Its js syntax used to ease the react element creation.
+it looks very similar to html syntax but not exactly html.
+
+14.React.createElement vs jsx
+createElement give a js object.
+let heading = React.createElement("h1",{id:"heading"}, "Namaste React");
+createElement => object => html element
+
+while jsx is coverted to react.createElemnt internally by Babel(transpiler)
+
+15.what is a component?
+A component is a nothing but a js function that return a jsx.
+Composing component ? writing a omponent under a component.
+
+17.Is JSX mandatory for React? NO
+
+18.Is Es6 mandatory for react? No
+
+19.What is virtual DOM?
+
+20.Why we nee keys in react?
+Keys uniquely identify the elments, so when an element is added all the elemnts will not have to rerendered.. only that particular will be rendered.
+
+21.What are props?
+Its a way to pass data from parent to child.
+
+22.Config driven ui?
+The UI depends on the data/config.. example for different city swiggy doesnt need new website its data will change and depending on that tha UI will be changed.

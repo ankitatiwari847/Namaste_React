@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { LOGO, CART_LOGO } from "../../utils/constant";
 import restaurantData from "../../utils/restaurant-data";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchField, setSearchField] = useState("");
@@ -15,7 +16,9 @@ const Header = () => {
 
   return (
     <div className="header">
-      <img className="logo" alt="logo" src={LOGO} />
+      <Link to="/">
+        <img className="logo" alt="logo" src={LOGO} />
+      </Link>
       <div className="search">
         <input
           className="search"
@@ -29,23 +32,35 @@ const Header = () => {
         />
       </div>
       <ul>
-        <li>Home</li>
-        <li>Contact us</li>
-        <li>About</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact us</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
         {
           // show card when the login btn is set to logout i.e. the user is already loged in
           loginBtn === "Logout" && (
             <li>
-              <img className="cart" src={CART_LOGO}></img>
+              <Link to="/cart">
+                <img className="cart" src={CART_LOGO}></img>
+              </Link>
             </li>
           )
         }
-        <li
-          className="login-btn"
-          onClick={() => setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")}
-        >
-          {loginBtn}
-        </li>
+        <Link to={loginBtn !== "Login" ? "/" : "/login"}>
+          <li
+            className="login-btn"
+            onClick={() =>
+              setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")
+            }
+          >
+            {loginBtn}
+          </li>
+        </Link>
       </ul>
     </div>
   );

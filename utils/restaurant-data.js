@@ -1,4 +1,4 @@
-export default restaurantData = [
+const restaurantData = [
   {
     info: {
       id: "432131",
@@ -769,3 +769,5 @@ export default restaurantData = [
     widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
   },
 ];
+
+export default restaurantData;

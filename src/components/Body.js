@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import restaurantData from "../../utils/restaurant-data";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState();
@@ -16,12 +17,10 @@ const Body = () => {
     let fetchAPIList =
       data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    console.log(fetchAPIList);
     setRestaurantList(fetchAPIList);
   };
 
   useEffect(() => {
-    console.log("Use Effect");
     fetchRestList();
   }, []);
 
@@ -56,10 +55,9 @@ const Body = () => {
           <div className="restaurant-card-wrap">
             {restaurantList.map((data) => {
               return (
-                <RestaurantCard
-                  key={data.info.id}
-                  restaurantDetail={data.info}
-                />
+                <Link key={data.info.id} to={"/restaurant/" + data.info.id}>
+                  <RestaurantCard restaurantDetail={data.info} />
+                </Link>
               );
             })}
           </div>

@@ -1,0 +1,40 @@
+1. What is a microservice?
+   Its an architectural pattern that arranges an application as a losely coupled, fine-grained services.This allows the services to independently scale meeting the for the applicationfeature it supports.
+
+2. What is monolith architecture?
+   Its a singular large computing network with one code base that couples all the business concerns together.
+
+3. Difference between monolith and mivroservices?
+   Monolithic applications typically consist of a client-side UI, a database, and a server-side application. Developers build all of these modules on a single code base. On the other hand, in a distributed architecture, each microservice works to accomplish a single feature or business logic
+
+4. Why do we need useEffect use?
+   Its useful to do any task that's needed to be done after render like api call. Because useEffect is called after the rendering.
+
+5. Optional chainig?
+   "?."
+6. Shimmer UI?
+   Insted of showing loader or progress bar,it mimics the layout and shapes of the content that will eventually appear. It keeps the user engaged better.
+
+7. Js expresion vs JS statement?
+   Expressions produce a value.
+   let hi = 1;
+   let hi = "hello";
+   let hi = 5 \* 10;
+   let hi = num > 100;
+   let hi = isHappy ? "🙂" : "🙁";
+   let hi = [1, 2, 3].pop();
+
+   While statement is an instruction to do something, like create a variable, run an if/else condition, or start a loop.
+   \*In React u can only write expression in {} but not statement.
+
+8. Conditional rendering?
+   Show diffrent content depending on some conditions. Use ternary operator for it.
+
+9. CORS?
+   Cross origing resource access.Accessing any source like code,image etc witch is on another domain.
+
+10. Async and await?
+    Async/Await makes it easier to write promises. The keyword 'async' before a function makes the function return a promise, always. And the keyword await is used inside async functions, which makes the program wait until the Promise resolves.
+
+11. USe of cont json = await data.json() ?
+    Because data is a promise returned by async function.json() returns a Promise that resolves to a JavaScript object.
