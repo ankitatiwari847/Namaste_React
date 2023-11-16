@@ -1,0 +1,19 @@
+1. Various ways to add images in app?
+   Ans. i) add link to img tag src.
+   ii) Import image
+   iii)Svg
+   iv)require function
+   v)css background.
+
+2. console.log(useState())
+   ans. Returns an array of length 2.
+
+3. useEffect with no dependency array?
+   ans. It will be called on every render.
+
+4. what is SPA?
+   ans. single page applications are applications that dynmically rewrites the current page instead of loading the whole page again. client side routing.
+
+5. Client side routing vs Server side routing?
+   ans. Client side routing means the on every navigation & rendering the request wont be sent to server, it will be handled by client.
+   The entire page is loaded initially , and subsequent navigation is managed by javasript on client side.
