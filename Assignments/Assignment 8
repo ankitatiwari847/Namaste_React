@@ -1,0 +1,83 @@
+1.  How do you create nested routes react-router-dom configuration?
+
+    const Route = createBrowserRouter([
+    {
+    path:"/",
+    element: <Home />
+    errorElement: <Error />
+    children: [
+    {
+    path: '/team',
+    element: <Team />
+    },
+    {
+    path: '/about',
+    element: <About />
+    }
+    ]
+    }
+    ])
+
+    use <Outlet /> in Home where you wnat to replace with child component.
+
+2.  createHashRouter, createMemoryRouter in react router dom?
+    createHashRouter - Instead of using normal URLs, it will use the hash (#) portion of the URL to manage the "application URL".
+    createMemoryRouter - Instead of using the browser's history, a memory router manages its own history stack in memory
+
+3.  What is the order of lifecycle in class based component?
+    Parent Constructor ->
+    Parent Render ->
+    child constructor ->
+    child render(bundled if more then 1) ->
+    child componentDidMount->
+    parent componentDidMOunt
+
+4.  What is componentDidMount ?
+    Its a lifecycle method in class based components, which is called after a component is rendered. Usaually use to write api calls here.
+
+5.  ComponentWillUnmount ?
+    Its an lifecycle method used just before a component gets unmounted. Its mostly used to write a cleanup or free up code. Example-
+
+import React from "react";
+export default class UserClass extends React.Component {
+constructor(props) {
+super(props);
+console.log("parent constructor");
+this.state = {
+count: 0,
+};
+}
+
+componentDidMount() {
+console.log("parent component did mount");
+this.timer = setInterval(() => {
+console.log("set time out");
+}, 100);
+}
+
+componentWillUnmount() {
+clearInterval(this.timer);
+}
+
+render() {
+console.log("parent render");
+return <div>User class Component</div>;
+}
+}
+
+6. Why do we use super(props) in constructor?
+   super(props) is used to ensure that before the components constructor executes its parents contructor get invoked.
+   it helps to initialize this.props.
+
+7. Why cant we have the callback function of useEffect async?
+   we can write:
+   async componentDidMount() {}
+   But not
+   useEffect(async ()=>{})
+   Because, useEffect can only return a function which is use for cleanup... but as we know the async function returns returns a promise. You can instead write a async function inside the callback function and call it imidiately.
+   useEffect(()=>{
+   async function() {
+   let data = await fetch('http://abc.com');
+   console.log(data.json())
+   }
+   })

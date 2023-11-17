@@ -20,7 +20,7 @@ const Body = () => {
     setRestaurantList(fetchAPIList);
   };
 
-  useEffect(() => {
+  useEffect(async () => {
     fetchRestList();
   }, []);
 
