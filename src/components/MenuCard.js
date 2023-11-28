@@ -7,9 +7,10 @@ const MenuCard = ({ cardData }) => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="category-wise-menu">
-      <div className="category-title">
+      <div className="category-title flex justify-between items-center mb-2 font-semibold">
         <h4>{cardData.title}</h4>
         <img
+          className="h-4"
           onClick={() => setShowMenu(!showMenu)}
           src={
             showMenu

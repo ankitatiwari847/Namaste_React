@@ -1,10 +1,10 @@
 export const ShimmerCard = () => {
-  return <div className="shimmer-card"></div>;
+  return <div className="h-44 w-40 rounded m-3 bg-gray-400"></div>;
 };
 
 export default Shimmer = () => {
   return (
-    <div className="shimmer-container">
+    <div className="shimmer-container grid grid-cols-6 gap-3">
       {Array(9)
         .fill("")
         .map((data, index) => {

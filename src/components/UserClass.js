@@ -10,13 +10,13 @@ export default class UserClass extends React.Component {
 
   componentDidMount() {
     console.log("parent component did mount");
-    // this.timer = setInterval(() => {
-    //   console.log("set time out");
-    // }, 100);
+    this.timer = setInterval(() => {
+      console.log("set time out");
+    }, 100);
   }
 
   componentWillUnmount() {
-    //clearInterval(this.timer);
+    clearInterval(this.timer);
   }
 
   render() {

@@ -30,8 +30,8 @@ const TopPick = ({ topPickData }) => {
     >
       {topPickData.map((data) => {
         return (
-          <div key={data.bannerId} className="top-pick-card">
-            <img src={CDN_LINK + data.creativeId} />
+          <div key={data.bannerId} className="top-pick-card mr-4">
+            <img className="h-50" src={CDN_LINK + data.creativeId} />
           </div>
         );
       })}

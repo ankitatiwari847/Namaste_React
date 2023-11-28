@@ -3,6 +3,7 @@ import restaurantData from "../../utils/restaurant-data";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState();
@@ -20,9 +21,18 @@ const Body = () => {
     setRestaurantList(fetchAPIList);
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     fetchRestList();
   }, []);
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Looks like you are offline... Please check your internet connection
+      </h1>
+    );
+  }
 
   //Show only restaurant will rating>4
   let filterRestaurant = () => {
@@ -38,21 +48,21 @@ const Body = () => {
   };
   return (
     <div className="res-body">
-      {restaurantList !== "undfined" && restaurantList?.length > 0 ? (
+      {restaurantList !== "undefined" && restaurantList?.length > 0 ? (
         <>
           <button
-            className="filter-top-rated"
+            className="flex py-1 px-2 mt-1 mr-1 mb-2 ml-6 bg-white border-solid border-2 border-gray-700 rounded-2xl text-sm items-center"
             onClick={() => filterRestaurant()}
           >
             Top Rated{" "}
             {filtered && (
               <img
-                className="close-icon"
+                className="h-3 w-3"
                 src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png"
               />
             )}
           </button>
-          <div className="restaurant-card-wrap">
+          <div className="restaurant-card-wrap grid grid-cols-6 gap-3">
             {restaurantList.map((data) => {
               return (
                 <Link key={data.info.id} to={"/restaurant/" + data.info.id}>

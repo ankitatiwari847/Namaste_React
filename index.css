@@ -1,3 +1,27 @@
+/* Your styles.css file */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+}
+
+/* Your custom styles go here */
+
+/*
 body {
   margin: 0;
   a {
@@ -54,7 +78,6 @@ body {
 .restaurant-card-wrap,
 .shimmer-container {
   grid-template-columns: repeat(6, 1fr);
-  /* margin: 0px 10px; */
   display: grid;
   gap: 12px;
   margin-left: 20px;
@@ -111,7 +134,6 @@ body {
   margin: 5px 5px 10px 25px;
   background: white;
   border: 1px solid darkgray;
-  /* box-shadow: 1px 1px 1px; */
   box-shadow: 0px 1px 2px 0px lightgray;
   padding: 5px 10px;
   font-family: unset;
@@ -211,7 +233,6 @@ body {
 
 .deals-wrap::-webkit-scrollbar {
   display: none;
-  -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
 }
 
@@ -253,4 +274,6 @@ body {
     font-size: 12px;
     margin-bottom: 5px;
   }
-}
+} 
+
+*/

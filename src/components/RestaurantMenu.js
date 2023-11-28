@@ -3,22 +3,11 @@ import { STAR } from "../../utils/constant";
 //import TopPick from "./TopPicks";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuCard";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
-  const [resData, setResData] = useState(null);
   const { resId } = useParams();
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    let data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=19.0759837&lng=72.8776559&restaurantId=${resId}`
-    );
-
-    const menu = await data.json();
-    setResData(menu.data);
-  };
+  const resData = useRestaurantMenu(resId);
 
   if (
     resData === null ||
@@ -40,36 +29,45 @@ const RestaurantMenu = () => {
   let menuList = resData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
   return (
-    <div className="res-menu-wrap">
+    <div className="res-menu-wrap my-5 mx-[15%]">
       {/*Restaurant details */}
-      <div className="res-menu-header">
+      <div className="res-menu-header flex justify-between border-b-2 border-dashed border-gray-400 pb-2">
         <div className="res-detail">
-          <h4>{resDetails.name}</h4>
-          <p>{resDetails.cuisines.join(",")}</p>
-          <p>{resDetails.areaName}</p>
+          <h4 className="m-auto mb-1 text-xl font-semibold">
+            {resDetails.name}
+          </h4>
+          <p className="m-auto text-xs">{resDetails.cuisines.join(",")}</p>
+          <p className="m-auto text-xs">{resDetails.areaName}</p>
         </div>
-        <div className="rating-wrap">
-          <div className="rating">
-            <img className="rating-star" src={STAR} />
+        <div className="rating-wrap border-solid border-1 border-[#e7e5e5] rounded p-2 shadow-md self-center">
+          <div className="rating justify-between items-center flex border-b-2 border-solid border-gray-400 ">
+            <img className="rating-star h-5 w-5" src={STAR} />
             <span>{resDetails.avgRating}</span>
           </div>
-          <div className="rating-count">{resDetails.totalRatingsString}</div>
+          <div className="rating-count text-[8px]">
+            {resDetails.totalRatingsString}
+          </div>
         </div>
       </div>
 
       {/*Deals */}
-      <div className="deals-wrap">
-        <div className="deals-heading">
+      <div className="deals-wrap no-scrollbar border-b-1 border-dashed border-[#d3d3d3] pb-5 overflow-x-scroll">
+        <div className="deals-heading flex m-2 ml-0">
           <h4>{resDetails.sla.slaString}</h4>
           <h4>{resDetails.costForTwoMessage}</h4>
         </div>
-        <div className="deals">
+        <div className="deals flex">
           {deals?.length > 0 ? (
             deals.map((deal, index) => {
               return (
-                <div key={index}>
-                  <h6>{deal.info.couponCode}</h6>
-                  <p>{deal.info.description}</p>
+                <div
+                  className="mt-[2px] mr-4 mb-0 ml-0 border-2 border-solid border-[#e9e9eb] rounded  items-center p-1 min-w-[100px]"
+                  key={index}
+                >
+                  <h6 className="m-0">{deal.info.couponCode}</h6>
+                  <p className="text-[9px] mt-1 mr-0 mb-0 ml-0 ">
+                    {deal.info.description}
+                  </p>
                 </div>
               );
             })
@@ -84,7 +82,7 @@ const RestaurantMenu = () => {
         {menuList.map((data, index) => {
           if (data?.card?.card?.title) {
             return (
-              <div key={index} className="category-menu">
+              <div key={index} className="category-menu mb-5">
                 <MenuCard cardData={data.card.card} />
               </div>
             );

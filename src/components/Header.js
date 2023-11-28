@@ -15,13 +15,13 @@ const Header = () => {
   };
 
   return (
-    <div className="header">
+    <div className="flex justify-between items-center shadow-md mb-2 sticky top-0 z-10 bg-white px-[10%]">
       <Link to="/">
-        <img className="logo" alt="logo" src={LOGO} />
+        <img className="logo h-24" alt="logo" src={LOGO} />
       </Link>
       <div className="search">
         <input
-          className="search"
+          className="search font-light text-sm text-gray-600  bg-[url('utils/images/search_icon.svg')] bg-no-repeat bg-right border h-7 px-3 py-1 focus:outline-none"
           type="text"
           placeholder="search restaurant"
           value={searchField}
@@ -31,29 +31,32 @@ const Header = () => {
           }}
         />
       </div>
-      <ul>
-        <li>
+      <ul className="flex items-center mr-3">
+        <li className="mx-2 text-base font-">
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li className="mx-2 text-base font-medium">
+          <Link to="/grocery">Grocery</Link>
+        </li>
+        <li className="mx-2 text-base font-medium">
           <Link to="/contact">Contact us</Link>
         </li>
-        <li>
+        <li className="mx-2 text-base font-medium">
           <Link to="/about">About</Link>
         </li>
         {
           // show card when the login btn is set to logout i.e. the user is already loged in
           loginBtn === "Logout" && (
-            <li>
+            <li className="mx-2 text-base font-medium">
               <Link to="/cart">
-                <img className="cart" src={CART_LOGO}></img>
+                <img className="cart h-7 w-7" src={CART_LOGO}></img>
               </Link>
             </li>
           )
         }
         <Link to={loginBtn !== "Login" ? "/" : "/login"}>
           <li
-            className="login-btn"
+            className="login-btn mx-2 text-base font-medium"
             onClick={() =>
               setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")
             }
