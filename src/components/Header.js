@@ -32,7 +32,7 @@ const Header = () => {
         />
       </div>
       <ul className="flex items-center mr-3">
-        <li className="mx-2 text-base font-">
+        <li className="mx-2 text-base font-medium">
           <Link to="/">Home</Link>
         </li>
         <li className="mx-2 text-base font-medium">
