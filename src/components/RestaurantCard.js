@@ -9,32 +9,49 @@ const RestaurantCard = (props) => {
     areaName,
     sla,
   } = props.restaurantDetail;
+
   let bg = `url(${CDN_LINK.concat(cloudinaryImageId)})`;
+
   return (
-    <div className="min-h-100 w-48 rounded p-1 hover:cursor-pointer hover:shadow-md">
+    <div className="min-h-120 w-50 rounded hover:cursor-pointer hover:shadow-md">
       <div
         id="restaurant-logo"
-        className="h-28 w-44 bg-center bg-no-repeat bg-cover"
+        className="h-32 w-50 bg-center bg-no-repeat bg-cover"
         style={{
           backgroundImage: bg,
         }}
       ></div>
-      <h3 className="restaurant-name my-1 mx-0 text-md">{name}</h3>
-      <div className="flex items-center justify-between text-xs  font-semibold">
+      <h3 className="px-2 restaurant-name my-1 mx-0 text-md font-bold">
+        {name}
+      </h3>
+      <div className=" px-2 flex items-center justify-between text-xs  font-semibold">
         <div className="flex items-center justify-between text-xs  font-semibold">
           <img className="h-5 w-5" src={STAR} />
           <span>{avgRating}</span>
         </div>
-        <span className="delivery-time">{sla.slaString}</span>
+        <span className="px-2 delivery-time">{sla.slaString}</span>
       </div>
-      <p className="my-1 text-xs overflow-ellipsis overflow-hidden whitespace-nowrap">
+      <p className="px-2 my-1 text-xs overflow-ellipsis overflow-hidden whitespace-nowrap">
         {...cuisines.join(", ")}
       </p>
-      <p className="my-1 text-xs overflow-ellipsis overflow-hidden whitespace-nowrap">
+      <p className="px-2 pb-4 my-1 text-xs overflow-ellipsis overflow-hidden whitespace-nowrap">
         {costForTwo}
       </p>
     </div>
   );
+};
+
+export const VegRestaurant = (RestaurantCard) => {
+  return ({ restaurantDetail }) => {
+    return (
+      <div>
+        <div className="absolute h-5 w-5 border-solid border-green-600 border-2 flex items-center justify-center">
+          <span className=" absolute bg-green-600 rounded-xl h-3 w-3 m-auto"></span>
+        </div>
+        <RestaurantCard restaurantDetail={restaurantDetail} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

@@ -1,5 +1,5 @@
 export const ShimmerCard = () => {
-  return <div className="h-44 w-40 rounded m-3 bg-gray-400"></div>;
+  return <div className="h-44 w-40 rounded m-3 bg-gray-200"></div>;
 };
 
 export default Shimmer = () => {

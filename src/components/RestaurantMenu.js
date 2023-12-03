@@ -7,6 +7,7 @@ import useRestaurantMenu from "../../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
+  const [showIndex, setShowIndex] = useState(null);
   const resData = useRestaurantMenu(resId);
 
   if (
@@ -28,8 +29,14 @@ const RestaurantMenu = () => {
   //Top pick data
   let menuList = resData?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
 
+  let categoryItem = menuList.filter(
+    (singleCategory) =>
+      singleCategory?.card?.card?.["@type"] ===
+      "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+
   return (
-    <div className="res-menu-wrap my-5 mx-[15%]">
+    <div className="res-menu-wrap my-5  w-6/12 m-auto">
       {/*Restaurant details */}
       <div className="res-menu-header flex justify-between border-b-2 border-dashed border-gray-400 pb-2">
         <div className="res-detail">
@@ -79,14 +86,20 @@ const RestaurantMenu = () => {
 
       {/**Top picks and menu by category */}
       <div className="category-menu-wrap">
-        {menuList.map((data, index) => {
-          if (data?.card?.card?.title) {
-            return (
-              <div key={index} className="category-menu mb-5">
-                <MenuCard cardData={data.card.card} />
-              </div>
-            );
-          }
+        {categoryItem.map((data, index) => {
+          return (
+            <div key={data?.card?.card?.title} className="category-menu mb-5">
+              <MenuCard
+                cardData={data?.card?.card}
+                showItem={index === showIndex ? true : false}
+                setShowIndex={() =>
+                  setShowIndex((prevIndex) =>
+                    index === prevIndex ? null : index
+                  )
+                }
+              />
+            </div>
+          );
         })}
       </div>
     </div>
