@@ -4,6 +4,7 @@ import { STAR } from "../../utils/constant";
 import { useParams } from "react-router-dom";
 import MenuCard from "./MenuCard";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
+import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();

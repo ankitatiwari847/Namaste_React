@@ -9,7 +9,6 @@ const useOnlineStatus = () => {
     });
   }, []);
 
-  console.log(onlineStatus);
   return onlineStatus;
 };
 

@@ -2,10 +2,13 @@ import { useState } from "react";
 import { LOGO, CART_LOGO } from "../../utils/constant";
 import restaurantData from "../../utils/restaurant-data";
 import { Link } from "react-router-dom";
+import { UseSelector, useSelector } from "react-redux";
 
 const Header = () => {
   const [searchField, setSearchField] = useState("");
   const [loginBtn, setLoginBtn] = useState("Login");
+
+  const cart = useSelector((store) => store.cart.items);
 
   //Find restaurants with name
   const searchRestaurant = () => {
@@ -46,13 +49,18 @@ const Header = () => {
         </li>
         {
           // show card when the login btn is set to logout i.e. the user is already loged in
-          loginBtn === "Logout" && (
-            <li className="mx-2 text-base font-medium">
-              <Link to="/cart">
-                <img className="cart h-7 w-7" src={CART_LOGO}></img>
-              </Link>
-            </li>
-          )
+          //loginBtn === "Logout" && (
+          <li className="mx-2 text-base font-medium">
+            <Link className="flex relative" to="/cart">
+              <img className="cart h-7 w-7" src={CART_LOGO}></img>
+              {cart.length > 0 && (
+                <span className="absolute bottom-[18px] left-[25px] font-semibold text-red-500">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
+          </li>
+          //)
         }
         <Link to={loginBtn !== "Login" ? "/" : "/login"}>
           <li

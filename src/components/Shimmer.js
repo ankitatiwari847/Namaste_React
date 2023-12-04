@@ -2,7 +2,7 @@ export const ShimmerCard = () => {
   return <div className="h-44 w-40 rounded m-3 bg-gray-200"></div>;
 };
 
-export default Shimmer = () => {
+const Shimmer = () => {
   return (
     <div className="shimmer-container grid grid-cols-6 gap-3">
       {Array(9)
@@ -13,3 +13,5 @@ export default Shimmer = () => {
     </div>
   );
 };
+
+export default Shimmer;
