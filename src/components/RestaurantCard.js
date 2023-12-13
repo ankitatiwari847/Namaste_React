@@ -13,7 +13,7 @@ const RestaurantCard = (props) => {
   let bg = `url(${CDN_LINK.concat(cloudinaryImageId)})`;
 
   return (
-    <div className="min-h-120 w-50 rounded hover:cursor-pointer hover:shadow-md">
+    <div className="min-h-120 w-50 rounded hover:cursor-pointer hover:shadow-md hover:scale-105 rounded-md overflow-hidden">
       <div
         id="restaurant-logo"
         className="h-32 w-50 bg-center bg-no-repeat bg-cover"
@@ -45,8 +45,8 @@ export const VegRestaurant = (RestaurantCard) => {
   return ({ restaurantDetail }) => {
     return (
       <div>
-        <div className="absolute h-5 w-5 border-solid border-green-600 border-2 flex items-center justify-center">
-          <span className=" absolute bg-green-600 rounded-xl h-3 w-3 m-auto"></span>
+        <div className="mt-1 hover:scale-105 ml-1 absolute h-5 w-5 border-solid border-green-400 border-2 flex items-center justify-center">
+          <span className=" absolute bg-green-400 rounded-xl h-3 w-3 m-auto"></span>
         </div>
         <RestaurantCard restaurantDetail={restaurantDetail} />
       </div>

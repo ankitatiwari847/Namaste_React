@@ -1,39 +1,19 @@
 import { useState } from "react";
 import { LOGO, CART_LOGO } from "../../utils/constant";
-import restaurantData from "../../utils/restaurant-data";
 import { Link } from "react-router-dom";
 import { UseSelector, useSelector } from "react-redux";
 
 const Header = () => {
-  const [searchField, setSearchField] = useState("");
   const [loginBtn, setLoginBtn] = useState("Login");
 
   const cart = useSelector((store) => store.cart.items);
 
-  //Find restaurants with name
-  const searchRestaurant = () => {
-    let filteredRestaurant = restaurantData.filter((data) => {
-      return data.info.name.toLowerCase().includes(searchField.toLowerCase());
-    });
-  };
-
   return (
     <div className="flex justify-between items-center shadow-md mb-2 sticky top-0 z-10 bg-white px-[10%]">
       <Link to="/">
-        <img className="logo h-24" alt="logo" src={LOGO} />
+        <img className="logo h-20 m-2" alt="logo" src={LOGO} />
       </Link>
-      <div className="search">
-        <input
-          className="search font-light text-sm text-gray-600  bg-[url('utils/images/search_icon.svg')] bg-no-repeat bg-right border h-7 px-3 py-1 focus:outline-none"
-          type="text"
-          placeholder="search restaurant"
-          value={searchField}
-          onChange={(e) => {
-            setSearchField(e.target.value);
-            searchRestaurant();
-          }}
-        />
-      </div>
+
       <ul className="flex items-center mr-3">
         <li className="mx-2 text-base font-medium">
           <Link to="/">Home</Link>

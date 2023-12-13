@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ankitatiwari847/Namaste_React#readme",
   "devDependencies": {
-    "parcel": "^2.10.1",
+    "parcel": "^2.10.3",
     "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
     "process": "^0.11.10",
@@ -28,6 +28,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "formik": "^2.4.5",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-multi-carousel": "^2.8.4",

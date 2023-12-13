@@ -8,6 +8,8 @@ import useOnlineStatus from "../../utils/useOnlineStatus";
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState();
   const [filtered, setFiltered] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   let fetchRestList = async () => {
     let fetchedData = await fetch(
@@ -18,6 +20,7 @@ const Body = () => {
       data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
     setRestaurantList(fetchAPIList);
+    setFilteredRestaurant(fetchAPIList);
   };
 
   useEffect(() => {
@@ -39,9 +42,9 @@ const Body = () => {
       let topRestaurants = restaurantData.filter(
         (data) => data.info.avgRating > 4
       );
-      setRestaurantList(topRestaurants);
+      setFilteredRestaurant(topRestaurants);
     } else {
-      setRestaurantList(restaurantData);
+      setFilteredRestaurant(restaurantData);
     }
     setFiltered(!filtered);
   };
@@ -49,23 +52,50 @@ const Body = () => {
   const VegRestaurantCard = VegRestaurant(RestaurantCard);
 
   return (
-    <div className="res-body">
+    <div className="res-body w-10/12 m-auto">
       {restaurantList !== "undefined" && restaurantList?.length > 0 ? (
         <>
-          <button
-            className="flex py-1 px-2 mt-1 mr-1 mb-2 ml-6 bg-white border-solid border-2 border-gray-700 rounded-2xl text-sm items-center"
-            onClick={() => filterRestaurant()}
-          >
-            Top Rated{" "}
-            {filtered && (
-              <img
-                className="h-3 w-3"
-                src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png"
-              />
-            )}
-          </button>
-          <div className="restaurant-card-wrap grid grid-cols-5 gap-3">
-            {restaurantList.map((data) => {
+          <div className="filter flex items-center my-3">
+            <button
+              className="flex py-1 px-2 mt-1 mr-1 mb-2 mr-5 bg-white border-solid border-2 border-gray-700 rounded-2xl text-sm items-center"
+              onClick={() => filterRestaurant()}
+            >
+              Top Rated{" "}
+              {filtered && (
+                <img
+                  className="h-3 w-3"
+                  src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png"
+                />
+              )}
+            </button>
+            <div>
+              <input
+                data-testid="searchInput"
+                type="text"
+                className="search-box border border-solid border-black mr-2 focus:outline-0 rounded"
+                value={searchText}
+                onChange={(e) => {
+                  setSearchText(e.target.value);
+                }}
+              ></input>
+              <button
+                className="px-4 py-1 bg-green-100 rounded-lg"
+                onClick={() => {
+                  const filteredRestaurants = restaurantList.filter(
+                    (restaurant) =>
+                      restaurant.info.name
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase())
+                  );
+                  setFilteredRestaurant(filteredRestaurants);
+                }}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div className="restaurant-card-wrap grid grid-cols-5 gap-7">
+            {filteredRestaurant.map((data) => {
               return (
                 <Link key={data.info.id} to={"/restaurant/" + data.info.id}>
                   {data.info.veg ? (
