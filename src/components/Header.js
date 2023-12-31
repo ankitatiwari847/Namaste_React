@@ -14,23 +14,23 @@ const Header = () => {
         <img className="logo h-20 m-2" alt="logo" src={LOGO} />
       </Link>
 
-      <ul className="flex items-center mr-3">
-        <li className="mx-2 text-base font-medium">
+      <ul className="flex items-center mr-3 text-gray-600">
+        <li className="mx-2 text-lg font-medium">
           <Link to="/">Home</Link>
         </li>
-        <li className="mx-2 text-base font-medium">
+        <li className="mx-2 text-lg font-medium">
           <Link to="/grocery">Grocery</Link>
         </li>
-        <li className="mx-2 text-base font-medium">
+        <li className="mx-2 text-lg font-medium">
           <Link to="/contact">Contact us</Link>
         </li>
-        <li className="mx-2 text-base font-medium">
+        <li className="mx-2 text-lg font-medium">
           <Link to="/about">About</Link>
         </li>
         {
           // show card when the login btn is set to logout i.e. the user is already loged in
           //loginBtn === "Logout" && (
-          <li className="mx-2 text-base font-medium">
+          <li className="mx-2 text-lg font-medium">
             <Link className="flex relative" to="/cart">
               <img className="cart h-7 w-7" src={CART_LOGO}></img>
               {cart.length > 0 && (
@@ -42,16 +42,18 @@ const Header = () => {
           </li>
           //)
         }
-        <Link to={loginBtn !== "Login" ? "/" : "/login"}>
-          <li
-            className="login-btn mx-2 text-base font-medium"
-            onClick={() =>
-              setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")
-            }
-          >
-            {loginBtn}
-          </li>
-        </Link>
+        {/*
+          <Link to={loginBtn !== "Login" ? "/" : "/login"}>
+            <li
+              className="login-btn mx-2 text-lg font-medium"
+              onClick={() =>
+                setLoginBtn(loginBtn === "Login" ? "Logout" : "Login")
+              }
+            >
+              {loginBtn}
+            </li>
+          </Link>
+          */}
       </ul>
     </div>
   );

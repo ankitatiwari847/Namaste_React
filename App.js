@@ -12,6 +12,7 @@ import Login from "./src/components/Login";
 import Shimmer from "./src/components/Shimmer";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Footer from "./src/components/Footer";
 
 const Grocery = lazy(() => import("./src/components/Grocery"));
 
@@ -21,6 +22,7 @@ const AppLayout = () => {
       <div className="app">
         <Header />
         <Outlet />
+        <Footer />
       </div>
     </Provider>
   );

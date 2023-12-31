@@ -4,6 +4,7 @@ import RestaurantCard, { VegRestaurant } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+import restaurantData from "../../utils/restaurant-data";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState();
@@ -12,13 +13,14 @@ const Body = () => {
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   let fetchRestList = async () => {
+    console.log("FETCH RESTAURANT LIST");
     let fetchedData = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.0759837&lng=72.8776559&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     let data = await fetchedData.json();
     let fetchAPIList =
-      data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
+      data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants || restaurantData;
     setRestaurantList(fetchAPIList);
     setFilteredRestaurant(fetchAPIList);
   };
@@ -52,34 +54,33 @@ const Body = () => {
   const VegRestaurantCard = VegRestaurant(RestaurantCard);
 
   return (
-    <div className="res-body w-10/12 m-auto">
+    <div className="res-body w-10/12 m-auto min-h-[80vh]">
       {restaurantList !== "undefined" && restaurantList?.length > 0 ? (
         <>
-          <div className="filter flex items-center my-3">
+          <div className="filter flex items-center mb-3 mt-7">
             <button
-              className="flex py-1 px-2 mt-1 mr-1 mb-2 mr-5 bg-white border-solid border-2 border-gray-700 rounded-2xl text-sm items-center"
+              className="flex py-2 px-4 mt-1 mr-3 mb-2  bg-white border-solid border-2 border-gray-700 rounded-2xl text-sm items-center"
               onClick={() => filterRestaurant()}
             >
               Top Rated{" "}
               {filtered && (
                 <img
-                  className="h-3 w-3"
+                  className="h-3 w-3 ml-2"
                   src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-close-512.png"
                 />
               )}
             </button>
-            <div>
+            <div className="ml-5 flex justify-center">
               <input
                 data-testid="searchInput"
                 type="text"
-                className="search-box border border-solid border-black mr-2 focus:outline-0 rounded"
+                className="search-box border border-solid border-slate-200 mr-2 focus:outline-0 rounded-lg p-1 "
                 value={searchText}
                 onChange={(e) => {
                   setSearchText(e.target.value);
                 }}
               ></input>
               <button
-                className="px-4 py-1 bg-green-100 rounded-lg"
                 onClick={() => {
                   const filteredRestaurants = restaurantList.filter(
                     (restaurant) =>
@@ -90,11 +91,15 @@ const Body = () => {
                   setFilteredRestaurant(filteredRestaurants);
                 }}
               >
-                Search
+                <img
+                  className="h-8"
+                  src="https://cdn4.iconfinder.com/data/icons/commenly-needed/400/Icon-12-512.png"
+                  alt="search"
+                />
               </button>
             </div>
           </div>
-          <div className="restaurant-card-wrap grid grid-cols-5 gap-7">
+          <div className="restaurant-card-wrap grid grid-cols-5 gap-7 mt-12">
             {filteredRestaurant.map((data) => {
               return (
                 <Link key={data.info.id} to={"/restaurant/" + data.info.id}>

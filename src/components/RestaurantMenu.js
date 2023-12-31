@@ -37,7 +37,7 @@ const RestaurantMenu = () => {
   );
 
   return (
-    <div className="res-menu-wrap my-5  w-6/12 m-auto">
+    <div className="res-menu-wrap my-5  w-6/12 m-auto min-h-[80vh]">
       {/*Restaurant details */}
       <div className="res-menu-header flex justify-between border-b-2 border-dashed border-gray-400 pb-2">
         <div className="res-detail">

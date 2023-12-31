@@ -8,7 +8,7 @@ const MenuCard = ({ cardData, showItem, setShowIndex }) => {
   };
   //const [showMenu, setShowMenu] = useState(false);
   return (
-    <div className="category-wise-menu ">
+    <div className="category-wise-menu">
       <div
         className="category-title border-b-4 border-solid border-gray-200 flex justify-between items-center mb-2 font-semibold"
         onClick={handleClick}
